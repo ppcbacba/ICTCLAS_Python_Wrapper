@@ -1,3 +1,8 @@
+#致谢
+首先感谢Bibo Hao，这个代码来自https://github.com/haobibo/ICTCLAS_Python_Wrapper
+
+#关于新的license，请到http://ictclas.nlpir.org/下载新版
+#以下是Bibo Hao的原文，在此之上是我自己的修改
 #ICTCLAS Python Wrapper
 Python wrapper for ICTCLAS 2015 (or NLPIR 2015).
 
