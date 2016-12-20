@@ -155,7 +155,7 @@ POS = {
 		"xs": "微博会话分隔符",
         "xm": "表情符合",
 		"xu":"网址URL",
-        "xx":"非语素字"
+        "xx1":"非语素字"
 	},
 	"w":{   #22.	标点符号(1个一类，16个二类)
 		"w":"标点符号",
@@ -216,8 +216,8 @@ NWI_GetResult = loadFun('NLPIR_NWI_GetResult',c_char_p, [c_int])
 NWI_Result2UserDict = loadFun('NLPIR_NWI_Result2UserDict',c_uint, None)
 
 
-if not Init('',ENCODING.UTF8_CODE,''):     #use this line for python 2.x
-###if not Init(b'',ENCODING.UTF8_CODE,b''):    #use this line for python 3.x; for python3, string parameters should be bytes type
+# if not Init('',ENCODING.UTF8_CODE,''):     #use this line for python 2.x
+if not Init(b'',ENCODING.UTF8_CODE,b''):    #use this line for python 3.x; for python3, string parameters should be bytes type
     print("Initialization failed!")
     exit(-111111)
 
@@ -245,12 +245,12 @@ def Seg(paragraph):
     for a in atoms:
         if len(a.sPOS) < 1: continue
         i = paragraph[a.start: a.start + a.length]
-        yield (i, a.sPOS)  #use this line for python 2.x
-        ###yield (i.decode('UTF8'), a.sPOS.decode('UTF8')) #use this line for python 3.x
+        # yield (i, a.sPOS)  #use this line for python 2.x
+        yield (i.decode('UTF8'), a.sPOS.decode('UTF8')) #use this line for python 3.x
 
 if __name__ == "__main__":
     p = "Big News: @解放日报 [最右]【呼市铁路局原副局长被判死缓 最头痛藏钱】2013年12月底，呼市铁路局原副局长马俊飞因受贿被判死缓。他说最头痛藏钱，从呼和浩特到北京，马俊飞又是购房又是租房，在挥之不去的恐惧中，人民币8800万、美元419万、欧元30万、港币27万，黄金43.3公斤，逐渐堆满了两所房子…… http://t.cn/8kgR6Yi"
-    ### p = p.encode('UTF8')
+    p = p.encode('UTF8')
     #print(p)
     for t in Seg(p):
         s = '%s\t%s\t%s' % (t[0],t[1],translatePOS(t[1]))
